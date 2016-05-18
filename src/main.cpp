@@ -202,7 +202,8 @@ const char *prop_to_text(iw_propery prop)
 		{ iw_propery::Description, "Description" },
 		{ iw_propery::ObjectName, "ObjectName" } };
 
-	return mapping[prop];
+	auto found = mapping.find(prop);
+	return found != mapping.end() ? found->second : "Unknown property";
 }
 
 void save_thumbnail(const std::wstring &file_name, const uint32_t width, const uint32_t height, const iw_format format, const uint8_t *pixels)
